@@ -19,6 +19,10 @@ class Play extends Phaser.Scene{
         keyRESET = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R)
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
+        this.input.on('pointerdown', function (pointer)
+        {
+            this.p1Rocket.shoot()
+        }, this)
         
         this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4 + 40, 'spaceship', 0, 30, game.settings.spaceshipSpeed).setOrigin(0, 0)
         this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2 + 40, 'spaceship', 0, 20, game.settings.spaceshipSpeed).setOrigin(0,0)
