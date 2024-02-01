@@ -20,9 +20,20 @@ class Play extends Phaser.Scene{
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
         
-        this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30).setOrigin(0, 0)
-        this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 20).setOrigin(0,0)
-        this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10).setOrigin(0,0)
+        this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4 + 40, 'spaceship', 0, 30, game.settings.spaceshipSpeed).setOrigin(0, 0)
+        this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2 + 40, 'spaceship', 0, 20, game.settings.spaceshipSpeed).setOrigin(0,0)
+        this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4 + 40, 'spaceship', 0, 10, game.settings.spaceshipSpeed).setOrigin(0,0)
+        this.ship04 = new Spaceship(this, game.config.width + borderUISize * 4, borderUISize*4, 'amoeba', 0, 80, game.settings.spaceshipSpeed + 2).setOrigin(0,0)
+        this.emitter = this.add.particles(25, 25, 'particle', {
+            speed: {min:-100 , max:100},
+            angle: {min:0, max:360},
+            scale: { start: 1, end: 1 },
+            gravityX: 100,
+            gravityY: 100,
+            lifespan: 4000,
+            emitting: false,
+            blendMode: 'ADD'
+        })
     
         this.p1Score = 0
         let scoreConfig = {
@@ -61,6 +72,7 @@ class Play extends Phaser.Scene{
             this.ship01.update()
             this.ship02.update()
             this.ship03.update()
+            this.ship04.update()
         }
 
         if(this.checkCollision(this.p1Rocket, this.ship03)) {
@@ -75,6 +87,10 @@ class Play extends Phaser.Scene{
             this.p1Rocket.reset()
             this.shipExplode(this.ship01)
         }
+        if(this.checkCollision(this.p1Rocket, this.ship04)) {
+          this.p1Rocket.reset()
+          this.shipExplode(this.ship04)
+      }
     }
 
     checkCollision(rocket, ship) {
@@ -94,6 +110,7 @@ class Play extends Phaser.Scene{
         ship.alpha = 0
         // create explosion sprite at ship's position
         let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0, 0);
+        this.emitter.explode(20,ship.x,ship.y)
         boom.anims.play('explode')             // play explode animation
         boom.on('animationcomplete', () => {   // callback after anim completes
           ship.reset()                         // reset ship position

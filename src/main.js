@@ -1,3 +1,7 @@
+//Gabriel Allen
+//Rockets and Space Amoebas
+// 4 hours to completion
+// Mods chosen: Rocket Destruction Particle Emmitter, New Spaceship Type (Space Amoeba),
 let config = {
     type: Phaser.AUTO,
     width: 640,
