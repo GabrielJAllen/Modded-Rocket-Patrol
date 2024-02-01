@@ -27,7 +27,7 @@ class Play extends Phaser.Scene{
         this.emitter = this.add.particles(25, 25, 'particle', {
             speed: {min:-100 , max:100},
             angle: {min:0, max:360},
-            scale: { start: 1, end: 1 },
+            scale: { start: 2, end: .5 },
             gravityX: 100,
             gravityY: 100,
             lifespan: 4000,
