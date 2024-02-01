@@ -1,7 +1,8 @@
 //Gabriel Allen
 //Rockets and Space Amoebas
 // 4 hours to completion
-// Mods chosen: Rocket Destruction Particle Emmitter, New Spaceship Type (Space Amoeba), Mouse Controls (though any mouse button works not just left click),
+// Mods chosen: Rocket Destruction Particle Emmitter, New Spaceship Type (Space Amoeba), Mouse Controls (though any mouse button works not just left click), and new random sound effects
+// Just used Phaser documentation and on site examples as well as JFXR to generate sounds
 let config = {
     type: Phaser.AUTO,
     width: 640,

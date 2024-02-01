@@ -16,7 +16,11 @@ class Menu extends Phaser.Scene{
             endFrame: 9
         })
         this.load.audio('sfx-select', './assets/sfx-select.wav')
-        this.load.audio('sfx-explosion', './assets/sfx-explosion.wav')
+        this.load.audio('boom1', './assets/sfx-ex1.wav')
+        this.load.audio('boom2', './assets/sfx-ex2.wav')
+        this.load.audio('boom3', './assets/sfx-ex3.wav')
+        this.load.audio('boom4', './assets/sfx-ex4.wav')
+        this.load.audio('boom5', './assets/sfx-ex5.wav')
         this.load.audio('sfx-shot', './assets/sfx-shot.wav')
     }
 

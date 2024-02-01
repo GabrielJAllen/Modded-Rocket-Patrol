@@ -123,6 +123,17 @@ class Play extends Phaser.Scene{
         })       
         this.p1Score += ship.points
         this.scoreLeft.text = this.p1Score      
-        this.sound.play('sfx-explosion')
+        let num = Math.floor(Math.random() * 5)
+        if( num == 0){
+          this.sound.play('boom1')
+        } else if ( num == 1){
+          this.sound.play('boom2')
+        } else if ( num == 2){
+          this.sound.play('boom3')
+        } else if ( num == 3){
+          this.sound.play('boom4')
+        } else if ( num == 4){
+          this.sound.play('boom5')
+        }
       }
 }
